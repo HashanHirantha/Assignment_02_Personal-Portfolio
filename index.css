@@ -6,7 +6,7 @@
 }
 
 body {
-    background: #080808;
+    background: #000000;
     color: #fff;
 }
 
@@ -16,6 +16,7 @@ body {
     background-image: url("myphoto.png");
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
 }
 
 .container {
@@ -96,10 +97,29 @@ nav ul li a:hover::after {
 .about-col-1 img {
     width: 100%;
     border-radius: 15px;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
 }
+
+.about-col-1 img:hover {
+    transform: scale(1.07) rotate(-2deg);
+    box-shadow: 0 12px 32px rgba(97, 233, 97, 0.3);
+}
+
 
 .about-col-2 {
     flex-basis: 60%;
+}
+
+#about .about-col-2 p {
+    transition: color 0.3s, background 0.3s;
+    cursor: pointer;
+}
+
+#about .about-col-2 p:hover {
+    color: #5acfcf;          
+    background: rgba(33,150,243,0.08); 
+    border-radius: 8px;       
 }
 
 .sub-title {
@@ -367,9 +387,12 @@ nav ul li a:hover::after {
     transition: var(--transition);
 }
 
+.contact-details a {
+    cursor: pointer;
+}
+
 .contact-details a:hover {
     color: var(--primary);
-
 }
 
 .cv-download {
