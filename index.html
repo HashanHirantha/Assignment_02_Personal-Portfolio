@@ -14,14 +14,16 @@
         <div class="container">
             <nav>
                 <img src="Hashan (1).png" class="logo">
-                <ul>
+                <ul id="sidemenu">
                     <li><a href="#About Me">About</a></li>
                     <li><a href="#Skills">Skills and Education</a></li>
                     <li><a href="#Achivements">Achivements</a></li>
                     <li><a href="#Projects">Projects</a></li>
-                    <li><a href="#Contact">Contact Details</a></li>
+                    <li><a href="#Contact">Contact</a></li>
                     <li><a href="#cv-download">CV</a></li>
+                    <i class="fas fa-xmark" onclick="closemenu()"></i>
                 </ul>
+                <i class="fas fa-bars" onclick="openmenu()"></i>
             </nav>
             <div class="header-text">
                 <p>Fullstack developer</p>
@@ -124,13 +126,14 @@
         <div class="container">
             <h1 class="sub-title">Projects</h1>
             <div class="project-list">
-                <div>
+                <div class="project-style">
                     <i class="fa-solid fa-code"></i>
                     <h2>Web Design</h2>
                     <p>Design a Pet Care Web Site for pet parents can look after their pets and give their treatments
-                        easyly.
+                        easyly.<br>
                         This project is a web application that allows pet owners to manage their pets' health and care
-                        needs. It includes features such as appointment scheduling, medication tracking, and a pet
+                        needs. <br><br>It includes features such as appointment scheduling, medication tracking, and a
+                        pet
                         health record system. The application is designed to be user-friendly and accessible, providing
                         pet owners with the tools they need to ensure their pets receive the best possible care.
                     </p>
@@ -140,10 +143,10 @@
                     <h2>VISIONX Marketing Project</h2>
                     <p>
                         This project is focused on empowering university students to transform their innovative ideas
-                        into successful startups. We provide guidance on ideation, business model development, and
+                        into successful startups.<br> We provide guidance on ideation, business model development, and
                         pitching, while connecting students with mentors and industry experts. The program also offers
                         workshops on entrepreneurship, networking events, and resources for navigating the process of
-                        registering a company—all while balancing academic commitments. Our goal is to create a
+                        registering a company—all while balancing academic commitments.<br> Our goal is to create a
                         supportive ecosystem where students can launch their ventures and gain real-world experience
                         alongside their degree.
                     </p>
@@ -152,11 +155,11 @@
                     <i class="fa-solid fa-dollar-sign"></i>
                     <h2>NEDA Project</h2>
                     <p>
-                        Give a chance to encourage with indusrty experts and get a chance to work with them. This
+                        Give a chance to encourage with indusrty experts and get a chance to work with them.<br> This
                         project is designed to provide students with hands-on experience in the industry, allowing them
-                        to apply their academic knowledge in real-world scenarios. Participants will have the
+                        to apply their academic knowledge in real-world scenarios.<br><br> Participants will have the
                         opportunity to collaborate with industry professionals, gain insights into current trends, and
-                        develop skills that are essential for their future careers.
+                        develop skills that are essential for their future careers.<br>
                         The program includes workshops, mentorship sessions, and practical projects that align with the
                         students' fields of study.
                     </p>
@@ -204,8 +207,10 @@
                         <i class="fas fa-medal"></i>
 
                         <h3>Hackathon Winner</h3>
-                        <p>Won a Hackathon oraganized by ACS-CODEFUSE 24'. </p>
-                        <a href="H.H.D.Nagahawatta.pdf" class="btn">View Certificate</a>
+                        <p>Won a Hackathon oraganized by ACS-CODEFUSE 24'.<br>
+                            <a href="H.H.D.Nagahawatta.pdf" class="btn">View Certificate</a>
+                        </p>
+
 
                     </div>
                     <div class="achievement-item">
@@ -253,7 +258,8 @@
                         </div>
                         <div class="contact-details">
                             <h3>LinkedIn</h3>
-                            <a href="www.linkedin.com/in/hashan-hirantha-3945b7293">linkedin.com/in/hashan-hirantha</a>
+                            <a
+                                href="https://www.linkedin.com/in/hashan-hirantha-3945b7293">linkedin.com/in/hashan-hirantha</a>
                         </div>
                     </div>
 
@@ -343,13 +349,18 @@
                     </div>
                 </div>
             </div>
-        </div> 
+        </div>
     </div>
     <div class="cv-download" id="cv-download">
-                    <a href="Hashan_Hirantha_CV.pdf" class="btn">
-                        <i class="fa-solid fa-download"></i> Download CV
-                    </a>
-                </div>
+        <a href="Hashan_Hirantha_CV.pdf" download class="btn">
+            <i class="fa-solid fa-download"></i> Download CV
+        </a>
+    </div>
+
+    <div class="footer-container">
+        <p>&copy; 2024 Hashan Hirantha. All rights reserved.</p>
+    </div>
+
 
 
     <script>
@@ -366,6 +377,18 @@
             }
             event.currentTarget.classList.add("active-link");
             document.getElementById(tabname).classList.add("active-tab");
+        }
+    </script>
+
+    <script>
+        var sidemenu = document.getElementById("sidemenu");
+
+        function openmenu() {
+            sidemenu.style.right = "0";
+        }
+
+        function closemenu() {
+            sidemenu.style.right = "-200px";
         }
     </script>
 </body>
