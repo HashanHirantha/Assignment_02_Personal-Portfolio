@@ -4,9 +4,464 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hashan Hirantha-Portfolio</title>
-    <link rel="stylesheet" href="index.css">
-    <script src="https://kit.fontawesome.com/d3da60248d.js" crossorigin="anonymous"></script>
+    <title>Hashan Hirantha - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #081b29;
+            color: #ededed;
+            overflow-x: hidden;
+        }
+
+        .container {
+            padding: 10px 10%;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            width: 140px;
+        }
+
+        nav ul li {
+            display: inline-block;
+            list-style: none;
+            margin: 10px 20px;
+        }
+
+        nav ul li a {
+            color: #ededed;
+            text-decoration: none;
+            font-size: 18px;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            width: 0;
+            height: 3px;
+            background: #00abf0;
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            transition: 0.5s;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .header-text {
+            margin-top: 20%;
+            font-size: 30px;
+        }
+
+        .header-text h1 {
+            font-size: 60px;
+            margin-top: 20px;
+        }
+
+        .header-text h1 span {
+            color: #00abf0;
+        }
+
+        /* About Section */
+        #about {
+            padding: 80px 0;
+            color: #ababab;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .about-col-1 {
+            flex-basis: 35%;
+        }
+
+        .about-col-1 img {
+            width: 100%;
+            border-radius: 15px;
+        }
+
+        .about-col-2 {
+            flex-basis: 60%;
+        }
+
+        .sub-title {
+            font-size: 60px;
+            font-weight: 600;
+            color: #ededed;
+            margin-bottom: 20px;
+        }
+
+        .tab-titles {
+            display: flex;
+            margin: 20px 0 40px;
+        }
+
+        .tab-links {
+            margin-right: 50px;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .tab-links::after {
+            content: '';
+            width: 0;
+            height: 3px;
+            background: #00abf0;
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            transition: 0.5s;
+        }
+
+        .tab-links.active-link::after {
+            width: 50%;
+        }
+
+        .tab-contents ul li {
+            list-style: none;
+            margin: 10px 0;
+        }
+
+        .tab-contents ul li span {
+            color: #00abf0;
+            font-size: 14px;
+        }
+
+        .tab-contents {
+            display: none;
+        }
+
+        .tab-contents.active-tab {
+            display: block;
+        }
+
+        /* Projects Section */
+        #Projects {
+            padding: 30px 0;
+        }
+
+        .project-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-gap: 40px;
+            margin-top: 50px;
+        }
+
+        .project-style {
+            background: #112e42;
+            padding: 40px;
+            font-size: 13px;
+            font-weight: 300;
+            border-radius: 10px;
+            transition: transform 0.5s;
+            border: 1px solid rgba(0, 171, 240, 0.2);
+        }
+
+        .project-style:hover {
+            transform: translateY(-10px);
+            border-color: #00abf0;
+        }
+
+        .project-style i {
+            font-size: 50px;
+            margin-bottom: 30px;
+            color: #00abf0;
+        }
+
+        .project-style h2 {
+            font-size: 30px;
+            font-weight: 500;
+            margin-bottom: 15px;
+            color: #ededed;
+        }
+
+        /* Achievements Section */
+        #Achivements {
+            padding: 80px 0;
+        }
+
+        .Achivements-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-gap: 40px;
+            margin-top: 50px;
+        }
+
+        .Activity-list-style, .Achivements-list-style {
+            background: #112e42;
+            padding: 40px;
+            font-size: 13px;
+            font-weight: 300;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 171, 240, 0.2);
+            transition: transform 0.5s;
+        }
+
+        .Activity-list-style:hover, .Achivements-list-style:hover {
+            transform: scale(1.05);
+            border-color: #00abf0;
+        }
+
+        .Activity-list-style h2, .Achivements-list-style h2 {
+            font-size: 30px;
+            font-weight: 500;
+            margin-bottom: 30px;
+            color: #ededed;
+            text-align: center;
+        }
+
+        .activity-item, .achievement-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .activity-item i, .achievement-item i {
+            font-size: 40px;
+            color: #00abf0;
+            margin-right: 20px;
+            min-width: 50px;
+        }
+
+        .activity-item h3, .achievement-item h3 {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: #ededed;
+        }
+
+        /* Contact Section */
+        #Contact {
+            padding: 80px 0;
+        }
+
+        .contact-container {
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-gap: 30px;
+            width: 100%;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            background: #112e42;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 171, 240, 0.2);
+            transition: all 0.5s;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            border-color: #00abf0;
+        }
+
+        .contact-icon {
+            margin-right: 20px;
+        }
+
+        .contact-icon i {
+            font-size: 30px;
+            color: #00abf0;
+        }
+
+        .contact-details h3 {
+            font-size: 20px;
+            margin-bottom: 5px;
+            color: #ededed;
+        }
+
+        .contact-details a {
+            text-decoration: none;
+            color: #ababab;
+            display: block;
+            margin-top: 5px;
+            transition: color 0.3s;
+        }
+
+        .contact-details a:hover {
+            color: #00abf0;
+        }
+
+        /* CV Section */
+        .cv-section {
+            padding: 80px 0;
+            background: #112e42;
+        }
+
+        .cv-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #081b29;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 171, 240, 0.2);
+        }
+
+        .cv-download {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 50px;
+            background: #00abf0;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #081b29;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: #0b7dab;
+            transform: scale(1.05);
+        }
+
+        .btn i {
+            margin-right: 10px;
+        }
+
+        /* Footer */
+        .footer-container {
+            text-align: center;
+            padding: 20px;
+            background: #112e42;
+            color: #ababab;
+            font-size: 14px;
+        }
+
+        /* Animation Classes */
+        .hidden {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s;
+        }
+
+        .show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-100px);
+            transition: all 1s;
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(100px);
+            transition: all 1s;
+        }
+
+        .slide-in-bottom {
+            opacity: 0;
+            transform: translateY(100px);
+            transition: all 1s;
+        }
+
+        .slide-in-top {
+            opacity: 0;
+            transform: translateY(-50px);
+            transition: all 1s;
+        }
+
+        .active {
+            opacity: 1;
+            transform: translate(0);
+        }
+
+        /* Responsive Design */
+        @media only screen and (max-width: 768px) {
+            .header-text {
+                margin-top: 100%;
+                font-size: 16px;
+            }
+            
+            .header-text h1 {
+                font-size: 30px;
+            }
+            
+            nav ul {
+                background: #112e42;
+                position: fixed;
+                top: 0;
+                right: -200px;
+                width: 200px;
+                height: 100vh;
+                padding-top: 50px;
+                z-index: 2;
+                transition: right 0.5s;
+            }
+            
+            nav ul li {
+                display: block;
+                margin: 25px;
+            }
+            
+            nav ul .fa-xmark {
+                position: absolute;
+                top: 25px;
+                left: 25px;
+                cursor: pointer;
+            }
+            
+            .sub-title {
+                font-size: 40px;
+            }
+            
+            .about-col-1, .about-col-2 {
+                flex-basis: 100%;
+            }
+            
+            .about-col-1 {
+                margin-bottom: 30px;
+            }
+            
+            .about-col-2 {
+                font-size: 14px;
+            }
+            
+            .tab-links {
+                font-size: 16px;
+                margin-right: 20px;
+            }
+            
+            .project-list, .Achivements-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -33,7 +488,6 @@
     </div>
 
     <!-----------------------about------------------------>
-
     <div id="about">
         <div class="container">
             <div class="class">
@@ -119,14 +573,13 @@
             </div>
         </div>
     </div>
-    </div>
 
     <!------------------Projects------------------->
     <div id="Projects">
         <div class="container">
-            <h1 class="sub-title  slide-in-top hidden">Projects</h1>
+            <h1 class="sub-title slide-in-top hidden">Projects</h1>
             <div class="project-list">
-                <div class="project-style slide-in-top hidden">
+                <div class="project-style slide-in-bottom hidden">
                     <i class="fa-solid fa-code"></i>
                     <h2>Web Design</h2>
                     <p>Design a Pet Care Web Site for pet parents can look after their pets and give their treatments
@@ -138,7 +591,7 @@
                         pet owners with the tools they need to ensure their pets receive the best possible care.
                     </p>
                 </div>
-                <div class="slide-in-top hidden" >
+                <div class="slide-in-bottom hidden">
                     <i class="fa-solid fa-bolt"></i>
                     <h2>VISIONX Marketing Project</h2>
                     <p>
@@ -151,7 +604,7 @@
                         alongside their degree.
                     </p>
                 </div>
-                <div class="slide-in-top hidden" >
+                <div class="slide-in-bottom hidden">
                     <i class="fa-solid fa-dollar-sign"></i>
                     <h2>NEDA Project</h2>
                     <p>
@@ -172,55 +625,45 @@
         <div class="container">
             <h1 class="sub-title slide-in-top hidden">Achivements & Activities</h1>
             <div class="Achivements-list">
-                <div class="Activity-list-style">
-                    <h2 class="slide-in-left hidden">Extra-Curricular Activities</h2>
-                    <div class="activity-item slide-in-bottom hidden">
+                <div class="Activity-list-style slide-in-left hidden">
+                    <h2>Extra-Curricular Activities</h2>
+                    <div class="activity-item">
                         <i class="fas fa-running"></i>
                         <h3>University Kabaddi Team</h3>
                         <p>Key player of University Kabaddi Team.
                         </p>
                     </div>
-                    <div class="activity-item slide-in-bottom hidden">
+                    <div class="activity-item">
                         <i class="fas fa-users"></i>
                         <h3>VISIONX project Chairperson</h3>
                         <p>Create oppertunities organizing events for university students who favorable for starting new
                             companies or startups</p>
                     </div>
-                    <div class="activity-item slide-in-bottom hidden">
+                    <div class="activity-item">
                         <i class="fas fa-hands-helping"></i>
                         <h3>Volunteering IEEE Student Branch</h3>
                         <p>IEEE Student Branch Industrial Relation team member</p>
                     </div>
                 </div>
-                <div class="Achivements-list-style">
-                    <h2 class="slide-in-left hidden">Achivements</h2>
-                    <div class="achievement-item slide-in-right hidden">
-
+                <div class="Achivements-list-style slide-in-right hidden">
+                    <h2>Achivements</h2>
+                    <div class="achievement-item">
                         <i class="fas fa-trophy"></i>
-
                         <h3>University Color holder</h3>
                         <p>2023/24 university Games Mens Kabaddi First-RunnersUp</p>
-
                     </div>
-                    <div class="achievement-item slide-in-bottom hidden">
-
+                    <div class="achievement-item">
                         <i class="fas fa-medal"></i>
-
                         <h3>Hackathon Winner</h3>
                         <p>Won a Hackathon oraganized by ACS-CODEFUSE 24'.<br>
                             <a href="H.H.D.Nagahawatta.pdf" class="btn">View Certificate</a>
                         </p>
-
-
                     </div>
-                    <div class="achievement-item slide-in-bottom hidden">
-
+                    <div class="achievement-item">
                         <i class="fas fa-certificate"></i>
-
                         <h3>Best Athlete of the year 2018</h3>
                         <p>Won Best athlete of the year 2018 in School Sports.Including 1st place of 800m,400m and 3rd
                             plcace 100m marathon</p>
-
                     </div>
                 </div>
             </div>
@@ -232,7 +675,7 @@
             <h1 class="sub-title slide-in-top hidden">Contact Details</h1>
             <div class="contact-container">
                 <div class="contact-info">
-                    <div class="contact-item slide-in-left hidden">
+                    <div class="contact-item slide-in-bottom hidden">
                         <div class="contact-icon">
                             <i class="fa-solid fa-envelope"></i>
                         </div>
@@ -242,7 +685,7 @@
                         </div>
                     </div>
 
-                    <div class="contact-item slide-in-left hidden">
+                    <div class="contact-item slide-in-bottom hidden">
                         <div class="contact-icon">
                             <i class="fa-solid fa-phone"></i>
                         </div>
@@ -252,7 +695,7 @@
                         </div>
                     </div>
 
-                    <div class="contact-item slide-in-left hidden">
+                    <div class="contact-item slide-in-bottom hidden">
                         <div class="contact-icon">
                             <i class="fa-brands fa-linkedin"></i>
                         </div>
@@ -263,7 +706,7 @@
                         </div>
                     </div>
 
-                    <div class="contact-item slide-in-left hidden">
+                    <div class="contact-item slide-in-bottom hidden">
                         <div class="contact-icon">
                             <i class="fa-brands fa-github"></i>
                         </div>
@@ -277,13 +720,13 @@
         </div>
     </div>
     <!-- CV Section -->
-    <div class="cv-section" id="cv">
-        <div class="cv-container slide-in-top hidden">
+    <div class="cv-section slide-in-top hidden" id="cv">
+        <div class="cv-container">
             <div class="cv-header">
                 <div class="cv-img">
                     <img src="Japura Warna Day Photo.jpg" alt="">
                 </div>
-                <div class="cv-title slide-in-top hidden">
+                <div class="cv-title">
                     <h1>Hashan Hirantha</h1>
                     <h2>Computer Science Student</h2>
                 </div>
@@ -296,7 +739,7 @@
 
             <div class="cv-main">
                 <div class="cv-left">
-                    <div class="cv-block slide-in-left hidden">
+                    <div class="cv-block">
                         <h3>Profile</h3>
                         <p>Passionate computer science student specializing in web development with
                             experience in building full-stack applications. Strong problem-solving
@@ -305,53 +748,37 @@
 
                     <div class="cv-block">
                         <h3>Education</h3>
-                        <div class="cv-item slide-in-left hidden">
+                        <div class="cv-item">
                             <h4>B.Comp in Computer Science</h4>
                             <p class="cv-sub">University of Sri Jayewardenepura | 2024 - Present</p>
                             <p>Current GPA: 3.33/4.0</p>
                             <p>Interests: Game Development & Cloud Engineering</p>
                         </div>
 
-                        <div class="cv-item slide-in-left hidden">
+                        <div class="cv-item">
                             <h4>Ordinary Level</h4>
                             <p class="cv-sub">G/Christ Church Boys' College | 2018</p>
                             <p>6A, 3B passes</p>
                         </div>
-                        <div class="cv-item slide-in-left hidden">
+                        <div class="cv-item">
                             <h4>Advanced Level</h4>
                             <p class="cv-sub">G/Christ Church Boys' College | 2023</p>
                             <p>Physical Science Stream - A,B & C passes</p>
                         </div>
                     </div>
 
-                    <div class="cv-block slide-in-left hidden">
+                    <div class="cv-block">
                         <h3>Work Experience</h3>
                         <div class="cv-item">
                             <p>-</p>
-                            <!-- <h4>Web Development Intern</h4>
-                                        <p class="cv-sub">Tech Solutions Inc. | Summer 2023</p>
-                                        <ul>
-                                            <li>Developed and maintained company websites using React and Node.js</li>
-                                            <li>Implemented RESTful APIs for client projects</li>
-                                            <li>Collaborated with design team to improve UI/UX</li>
-                                        </ul> -->
                         </div>
-
-                        <!-- <div class="cv-item">
-                                        <h4>Freelance Developer</h4>
-                                        <p class="cv-sub">Self-Employed | 2020 - Present</p>
-                                        <ul>
-                                            <li>Built custom websites for small businesses</li>
-                                            <li>Created web applications for local organizations</li>
-                                            <li>Provided technical consulting services</li>
-                                        </ul>
-                                        </div> -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="cv-download" id="cv-download">
+    
+    <div class="cv-download slide-in-bottom hidden" id="cv-download">
         <a href="Hashan_Hirantha_CV.pdf" download class="btn">
             <i class="fa-solid fa-download"></i> Download CV
         </a>
@@ -360,37 +787,6 @@
     <div class="footer-container">
         <p>&copy; 2024 Hashan Hirantha. All rights reserved.</p>
     </div>
-
-
-
-    <script>
-
-        var tablinks = document.getElementsByClassName("tab-links");
-        var tabcontents = document.getElementsByClassName("tab-contents");
-
-        function opentab(tabname) {
-            for (tablink of tablinks) {
-                tablink.classList.remove("active-link");
-            }
-            for (tabcontent of tabcontents) {
-                tabcontent.classList.remove("active-tab");
-            }
-            event.currentTarget.classList.add("active-link");
-            document.getElementById(tabname).classList.add("active-tab");
-        }
-    </script>
-
-    <script>
-        var sidemenu = document.getElementById("sidemenu");
-
-        function openmenu() {
-            sidemenu.style.right = "0";
-        }
-
-        function closemenu() {
-            sidemenu.style.right = "-200px";
-        }
-    </script>
 
     <script>
         // Tab function
@@ -455,7 +851,6 @@
             }, 500);
         };
     </script>
-
 </body>
 
 </html>
