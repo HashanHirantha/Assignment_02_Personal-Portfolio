@@ -667,7 +667,7 @@ nav .fas {
         font-size: 25px;
     }
     nav ul{
-        background: #5fe15f;
+        background: linear-gradient(135deg, rgba(214, 31, 246, 0.653) 0%, rgba(33, 150, 243, 0.7) 100%);
         position: fixed;
         top: 0;
         right: -200px;
